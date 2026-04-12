@@ -1,0 +1,30 @@
+name: CICD
+on:
+ workflow_dispatch
+
+jobs:
+    code:
+       runs-on: ubuntu-latest
+       steps:
+         - name: checkout code
+           run: echo "copy the code from github"
+    build:
+       runs-on: ubuntu-latest
+       steps:
+         - name: build the code
+           run: echo "copy the code from github"     
+
+    test:
+       runs-on: ubuntu-latest
+       steps:
+         - name: test the code
+           run: echo " copy the code from github"
+
+
+    deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - name: deploy code
+           run: echo "copy the code from github"
+
+           
