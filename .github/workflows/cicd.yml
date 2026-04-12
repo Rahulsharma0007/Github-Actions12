@@ -1,6 +1,17 @@
 name: CICD
 on:
- workflow_dispatch
+ workflow_dispatch:
+   inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+   
 
 jobs:
     code:
@@ -24,6 +35,7 @@ jobs:
 
 
     deploy:
+       if: inputs.environment == 'deploy'
        needs: [code,build,test]
        runs-on: ubuntu-latest
        steps:
