@@ -9,12 +9,14 @@ jobs:
          - name: checkout code
            run: echo "copy the code from github"
     build:
+       needs: [code]
        runs-on: ubuntu-latest
        steps:
          - name: build the code
            run: echo "copy the code from github"     
 
     test:
+       needs: [code,build]
        runs-on: ubuntu-latest
        steps:
          - name: test the code
@@ -22,6 +24,7 @@ jobs:
 
 
     deploy:
+       needs: [code,build,test]
        runs-on: ubuntu-latest
        steps:
          - name: deploy code
