@@ -19,5 +19,7 @@ jobs:
           uses: ./.github/workflows/docker-lint.yml
     buildandpush:
          uses: ./.github/workflows/buildandpush.yml
+         secrets: inherit
     image-scan:
          uses: ./.github/workflows/image-scan.yml
+         secrets: inherit
