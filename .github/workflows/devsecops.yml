@@ -10,6 +10,7 @@ jobs:
     secret-scan:
          needs: ["code-checkout"]
          uses: ./.github/workflows/secret-scan.yml
+         secrets: inherit
     dependency-scan:
      
           uses: ./.github/workflows/dependency-scan.yml
