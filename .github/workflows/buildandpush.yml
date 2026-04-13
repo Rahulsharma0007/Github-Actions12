@@ -22,5 +22,5 @@ jobs:
                 context: .   # It is showing that dockerfile is in the same repo
                 push: true
                 tags: |
-                    ${{ secrets.DOCKERHUB_USERNAME }}/github-actions-app:${{ github.sha }}
+                    ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:${{ github.sha }}
                     ${{ secrets.DOCKERHUB_USERNAME }}/github-actions-app:${{ github.ref_name }}
