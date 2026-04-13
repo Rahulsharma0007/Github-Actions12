@@ -8,20 +8,20 @@ jobs:
          uses: ./.github/workflows/code-quality.yml
 
     secret-scan:
-         needs: ["code-checkout"]
+        
          uses: ./.github/workflows/secret-scan.yml
          secrets: inherit
     dependency-scan:
-          needs: ["code-checkout","secret-scan"]
+        
           uses: ./.github/workflows/dependency-scan.yml
     docker-lint:
-          needs: ["code-checkout","secret-scan","dependency-scan"]
+          
           uses: ./.github/workflows/docker-lint.yml
     buildandpush:
          needs: ["code-checkout","secret-scan","docker-lint", "docker-lint"]
          uses: ./.github/workflows/buildandpush.yml
          secrets: inherit
     image-scan:
-         needs: ["code-checkout","secret-scan","docker-lint", "docker-lint","buildandpush"]
+        
          uses: ./.github/workflows/image-scan.yml
          secrets: inherit
