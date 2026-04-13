@@ -1,0 +1,22 @@
+name: devsecops-pipeline
+
+on:
+    workflow_dispatch
+
+jobs:
+    code-checkout:
+         uses: ./.github/workflows/code-quality.yml
+
+    secret-scan:
+         needs: ["code-checkout"]
+         uses: ./.github/workflows/secret-scan.yml
+    dependency-scan:
+          needs: ["code-checkout","secret-scan"]
+          uses: ./.github/workflows/dependency-scan.yml
+    docker-lint:
+          needs: ["code-checkout","secret-scan".dependency-scan]
+          uses: ./.github/workflows/docker-lint.yml
+    buildandpush:
+         uses: ./.github/workflows/buildandpush.yml
+    image-scan:
+         uses: ./.github/workflows/image-scan.yml
