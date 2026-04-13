@@ -22,6 +22,6 @@ jobs:
          uses: ./.github/workflows/buildandpush.yml
          secrets: inherit
     image-scan:
-        
-         uses: ./.github/workflows/image-scan.yml
-         secrets: inherit
+        needs: ["buildandpush"]
+        uses: ./.github/workflows/image-scan.yml
+        secrets: inherit
