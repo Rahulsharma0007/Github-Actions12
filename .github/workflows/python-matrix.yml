@@ -1,0 +1,22 @@
+name: python-matrix
+
+on:
+    workflow_dispatch
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: setup python
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.13"
+
+            - name: install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Flake run
+              run: flake8 app.py
